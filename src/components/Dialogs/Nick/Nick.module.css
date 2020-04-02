@@ -1,0 +1,40 @@
+.ava {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    text-transform: none;
+}
+
+.ava img {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    margin-bottom: 8px;
+}
+
+.content {
+    background: linear-gradient(45deg, #2196F3, #3F51B5);
+    border-radius: 10px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.ColorBleur {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 10px 0;
+}
+
+.content:hover {
+    background: linear-gradient(45deg, #6E2AE4, #E91E63);
+    transition-duration: .2s;
+    text-decoration: none;
+}
+
+.active{
+    background: linear-gradient(45deg, #6E2AE4, #E91E63);
+}

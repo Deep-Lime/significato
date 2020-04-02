@@ -1,0 +1,70 @@
+.grid {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+
+.nickname {
+    padding-top: 15px;
+    background-color: #F9F8F9;
+    padding-right: 40px;
+}
+
+.mail {
+    background-color: #F9F8F9;
+    padding-left: 50px;
+
+}
+
+.NickTittle {
+    font-size: 24px;
+    letter-spacing: 4px;
+    border-bottom: #cccccc 1px solid;
+    padding: 10px 0 15px 0;
+    font-weight: bold;
+    margin: 0 15px;
+}
+
+.posts textarea {
+    width: 700px;
+    border: 2px solid #2196F3;
+    background-color: #ffffff;
+    margin-top: 30px;
+    padding: 15px;
+    font-size: 12px;
+    resize: none;
+    overflow: hidden;
+    outline: none;
+    border-radius: 6px;
+    text-align: left;
+    text-transform: none;
+}
+
+.posts__button_b {
+    margin-top: 15px;
+    margin-left: 15px;
+    border: 2px solid #2196F3;
+    background-color: #2196F3;
+    color: #fff;
+    cursor: pointer;
+    font-size: 11px;
+    outline: none;
+    border-radius: 3px;
+    width: 127px;
+    height: 28px;
+    letter-spacing: 1px;
+    margin-bottom: 50px;
+}
+
+.posts__button_b:first-child {
+    margin-left: 0;
+}
+
+.posts__button_b:hover {
+    background-color: #3F51B5;
+    border: 2px solid #3F51B5;
+    transition-duration: .2s;
+}
+
+.posts__button i {
+    padding-right: 5px;
+}
