@@ -13,35 +13,32 @@ const MyPosts = (props) => {
         Reposts={p.Reposts}
         Views={p.Views}/>);
 
-    let NewPostText = React.createRef();
-
-    let AddPost = () => {
-        let PostText = NewPostText.current.value;
-        alert("Текст успешно отправлен!")
-    };
+    let NewPostElement = React.createRef();
 
     let addPost = () => {
-        let text = NewPostText.current.value;
-        props.NewPost(text);
-        NewPostText.current.value = '';
+        props.NewPost();
+    };
+
+    let onChange = () => {
+        let Text = NewPostElement.current.value;
+        props.UpdatePostText(Text);
     };
 
     return (
         <div className={s.Main}>
             <div className={s.posts}>
                 <h4>Новый Запись</h4>
-                <textarea ref={ NewPostText } rows="6" placeholder="Создать новый пост...">
-                </textarea>
+                <textarea ref={NewPostElement} onChange={onChange} value={props.NewPostText} rows="6" placeholder="Создать новый пост..." />
 
                 <div className={s.posts__button}>
-                    <button className={s.posts__button_b} onClick={ addPost }>
-                        <i className="fa fa-paper-plane" aria-hidden="true"></i> Отправить
+                    <button className={s.posts__button_b} onClick={addPost}>
+                        <i className="fa fa-paper-plane" aria-hidden="true"/> Отправить
                     </button>
-                    <button className={s.posts__button_b} onClick={ AddPost }>
-                        <i className="fa fa-file" aria-hidden="true"></i> Прикрепить
+                    <button className={s.posts__button_b} onClick={addPost}>
+                        <i className="fa fa-file" aria-hidden="true"/> Прикрепить
                     </button>
-                    <button className={s.posts__button_b} onClick={ AddPost }>
-                        <i className="fa fa-trash" aria-hidden="true"></i> Очистить
+                    <button className={s.posts__button_b} onClick={addPost}>
+                        <i className="fa fa-trash" aria-hidden="true"/> Очистить
                     </button>
                 </div>
             </div>

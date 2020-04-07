@@ -8,7 +8,10 @@ const Profile = (props) => {
         <div className="content__box">
 
             <ProfileInfo/>
-            <MyPosts PostData={props.state.PostData} NewPost={props.NewPost}/>
+            <MyPosts PostData={props.ProfilePage.PostData}
+                     NewPostText={props.ProfilePage.NewPostText}
+                     NewPost={props.NewPost}
+                     UpdatePostText={props.UpdatePostText} />
 
         </div>
     );

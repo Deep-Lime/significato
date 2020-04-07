@@ -12,10 +12,14 @@ const App = (props) => {
             <Sidebar/>
 
             <div className="main_content">
-                <Route path='/Profile' render={() => <Profile state={props.state.profilePage}
-                                                              NewPost={props.NewPost}/>}/>
-                <Route path='/Dialogs' render={() => <Dialogs state={props.state.dialogsPage}
-                                                              NewMassage={props.NewMassage}/>}/>
+                <Route path='/Profile'
+                       render={() => <Profile ProfilePage={props.state.ProfilePage}
+                                              NewPost={props.NewPost}
+                                              UpdatePostText={props.UpdatePostText}/>}/>
+                <Route path='/Dialogs' render={() => <Dialogs DialogsPage={props.state.DialogsPage}
+                                                              NewMassageText={props.state.DialogsPage.NewMassageText}
+                                                              NewMassage={props.NewMassage}
+                                                              UpdateMassageText={props.UpdateMassageText}/>}/>
             </div>
         </section>
     );
