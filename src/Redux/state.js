@@ -1,4 +1,6 @@
-import {RerenderDOMTree} from "../render";
+let RerenderDOMTree = () => {
+    console.log('State changed');
+};
 
 let state = {
     ProfilePage: {
@@ -131,7 +133,7 @@ let state = {
     },
 };
 
-export let NewPost = () => {
+export const NewPost = () => {
     let AddPost = {
         Title: state.ProfilePage.NewPostText,
         Massage: "",
@@ -146,7 +148,12 @@ export let NewPost = () => {
     RerenderDOMTree(state);
 };
 
-export let NewMassage = () => {
+export const UpdatePostText = (NewText) => {
+    state.ProfilePage.NewPostText = NewText;
+    RerenderDOMTree(state);
+};
+
+export const NewMassage = () => {
     let AddMessage = {
         UserName: "HackerMen",
         Avatar: "https://images.unsplash.com/photo-1544890225-2f3faec4cd60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
@@ -156,14 +163,13 @@ export let NewMassage = () => {
     RerenderDOMTree(state);
 };
 
-export let UpdatePostText = (NewText) => {
-    state.ProfilePage.NewPostText = NewText;
+export const UpdateMassageText = (NewText) => {
+    state.DialogsPage.NewMassageText = NewText;
     RerenderDOMTree(state);
 };
 
-export let UpdateMassageText = (NewText) => {
-    state.DialogsPage.NewMassageText = NewText;
-    RerenderDOMTree(state);
+export const Subscribe = (Observer) => {
+    RerenderDOMTree = Observer;
 };
 
 export default state;
