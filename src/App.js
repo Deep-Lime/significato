@@ -9,17 +9,16 @@ const App = (props) => {
 
     return (
         <section className="main">
-            <Sidebar/>
+            <Sidebar />
 
             <div className="main_content">
                 <Route path='/Profile'
                        render={() => <Profile ProfilePage={props.state.ProfilePage}
-                                              NewPost={props.NewPost}
-                                              UpdatePostText={props.UpdatePostText}/>}/>
-                <Route path='/Dialogs' render={() => <Dialogs DialogsPage={props.state.DialogsPage}
-                                                              NewMassageText={props.state.DialogsPage.NewMassageText}
-                                                              NewMassage={props.NewMassage}
-                                                              UpdateMassageText={props.UpdateMassageText}/>}/>
+                                              Dispatch={props.Dispatch}/>}/>
+                <Route path='/Dialogs'
+                       render={() => <Dialogs DialogsPage={props.state.DialogsPage}
+                                              NewMessageText={props.state.DialogsPage.NewMessageText}
+                                              Dispatch={props.Dispatch}/>}/>
             </div>
         </section>
     );

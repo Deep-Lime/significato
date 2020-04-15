@@ -17,12 +17,13 @@ const Dialogs = (props) => {
     let NewDialogElement = React.createRef();
 
     let AddMail = () => {
-        props.NewMassage();
+        debugger;
+        props.Dispatch({type: 'NewMessage'});
     };
 
     let onChange = () => {
         let Text = NewDialogElement.current.value;
-        props.UpdateMassageText(Text);
+        props.Dispatch({type: 'UpdateMassageText', NewText: Text});
     };
 
     return (
@@ -33,16 +34,17 @@ const Dialogs = (props) => {
                     <div className={s.mail}>
                         {DialogsElements}
                         <div className={s.posts}>
-                            <textarea onChange={onChange} ref={NewDialogElement} value={props.NewMassageText} rows="3" placeholder="Написать Сообщение..." />
+                            <textarea onChange={onChange} ref={NewDialogElement} value={props.NewMessageText} rows="3"
+                                      placeholder="Написать Сообщение..."/>
 
                             <div className={s.posts__button}>
-                                <button className={s.posts__button_b} onClick={ AddMail }>
+                                <button className={s.posts__button_b} onClick={AddMail}>
                                     <i className="fa fa-paper-plane" aria-hidden="true"/> Отправить
                                 </button>
-                                <button className={s.posts__button_b} onClick={ AddMail }>
+                                <button className={s.posts__button_b} onClick={AddMail}>
                                     <i className="fa fa-file" aria-hidden="true"/> Прикрепить
                                 </button>
-                                <button className={s.posts__button_b} onClick={ AddMail }>
+                                <button className={s.posts__button_b} onClick={AddMail}>
                                     <i className="fa fa-trash" aria-hidden="true"/> Очистить
                                 </button>
                             </div>

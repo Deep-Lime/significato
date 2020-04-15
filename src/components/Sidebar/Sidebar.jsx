@@ -26,8 +26,12 @@ const Sidebar = () => {
                     <span>Сообщения</span>
                 </NavLink>
                 <NavLink to="#">
-                    <i className="fa fa-users" aria-hidden="true"/>
+                    <i className="fa fa-user" aria-hidden="true"/>
                     <span>Друзья</span>
+                </NavLink>
+                <NavLink to="#">
+                    <i className="fa fa-users" aria-hidden="true"/>
+                    <span>Сообщества</span>
                 </NavLink>
                 <NavLink to="#">
                     <i className="fa fa-camera" aria-hidden="true"/>

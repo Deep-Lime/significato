@@ -10,11 +10,10 @@ const Profile = (props) => {
             <ProfileInfo/>
             <MyPosts PostData={props.ProfilePage.PostData}
                      NewPostText={props.ProfilePage.NewPostText}
-                     NewPost={props.NewPost}
-                     UpdatePostText={props.UpdatePostText} />
+                     Dispatch={props.Dispatch}/>
 
         </div>
     );
-}
+};
 
 export default Profile;
