@@ -7,8 +7,10 @@ import {Route} from "react-router-dom";
 
 const App = (props) => {
 
+    // Header и Footer пока не импортируется ( Не доделаны )
     return (
         <section className="main">
+
             <Sidebar />
 
             <div className="main_content">

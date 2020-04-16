@@ -3,6 +3,7 @@ import s from './Nick.module.css';
 import {NavLink} from "react-router-dom";
 
 const Nick = (props) => {
+
     let path = "/Dialogs/" + props.Name;
 
     return (

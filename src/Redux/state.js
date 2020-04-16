@@ -1,3 +1,8 @@
+const NewPost = 'NewPost';
+const UpdatePostText = 'UpdatePostText';
+const NewMessage = 'NewMessage';
+const UpdateMassageText = 'UpdateMassageText';
+
 let store = {
     _state: {
         ProfilePage: {
@@ -130,11 +135,12 @@ let store = {
         },
     },
 
+    // Запрет пользоваться STATE, функция посредник
     getState() {
-        debugger;
         return this._state;
     },
 
+    // Стартовое значение до активации слежки за RerenderDOMTree
     _callSubscriber() {
         console.log('State changed');
     },
@@ -145,8 +151,8 @@ let store = {
     },
 
     Dispatch(Action) {
-        if (Action.type === 'NewPost') {
-
+        //Profile Posts
+        if (Action.type === NewPost) {
             let AddPost = {
                 Title: this._state.ProfilePage.NewPostText,
                 Massage: "",
@@ -159,14 +165,12 @@ let store = {
             this._state.ProfilePage.PostData.push(AddPost);
             this._state.ProfilePage.NewPostText = '';
             this._callSubscriber(this._state);
-
-        } else if (Action.type === 'UpdatePostText') {
-
+        } else if (Action.type === UpdatePostText) {
             this._state.ProfilePage.NewPostText = Action.NewText;
             this._callSubscriber(this._state);
 
-        } else if (Action.type === 'NewMessage') {
-
+        //Dialogs Messages
+        } else if (Action.type === NewMessage) {
             let AddMessage = {
                 UserName: "HackerMen",
                 Avatar: "https://images.unsplash.com/photo-1544890225-2f3faec4cd60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
@@ -175,16 +179,21 @@ let store = {
             this._state.DialogsPage.DialogUsersData.push(AddMessage);
             this._state.DialogsPage.NewMessageText = '';
             this._callSubscriber(this._state);
-
-        } else if (Action.type === 'UpdateMassageText') {
-
+        } else if (Action.type === UpdateMassageText) {
             this._state.DialogsPage.NewMessageText = Action.NewText;
             this._callSubscriber(this._state);
-
         }
-    },
+    }
 
 };
+
+//Profile Posts
+export const NewPostActionCreator = () => ({type: NewPost});
+export const UpdatePostTextActionCreator = (Text) => ({type: UpdatePostText, NewText: Text});
+
+//Dialogs Messages
+export const NewMessageActionCreator = () => ({type: NewMessage});
+export const UpdateMassageTextActionCreator = (Text) => ({type: UpdateMassageText, NewText: Text});
 
 export default store;
 window.store = store;

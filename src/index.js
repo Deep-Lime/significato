@@ -6,6 +6,7 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 
+// Создаём RerenderDOMTree для возможности повторного вызоваи и отрисовки
 let RerenderDOMTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
@@ -14,8 +15,10 @@ let RerenderDOMTree = (state) => {
     );
 };
 
+// Вызов с передачей State
 RerenderDOMTree(store.getState());
 
+// Патерн Observer
 store.Subscribe(RerenderDOMTree);
 
 // If you want your app to work offline and load faster, you can change

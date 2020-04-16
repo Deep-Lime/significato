@@ -1,6 +1,7 @@
 import React from 'react';
 import s from './MyPosts.module.css';
 import Post from './Post/Post.jsx';
+import {NewPostActionCreator, UpdatePostTextActionCreator} from "./../../../Redux/state";
 
 const MyPosts = (props) => {
 
@@ -13,16 +14,19 @@ const MyPosts = (props) => {
         Reposts={p.Reposts}
         Views={p.Views}/>);
 
+    // Для чтения значений textarea
     let NewPostElement = React.createRef();
 
+    // Добовление Поста
     let addPost = () => {
-        debugger;
-        props.Dispatch({type: 'NewPost'});
+        props.Dispatch(NewPostActionCreator());
     };
 
+    // Обновление текста
     let onChange = () => {
         let Text = NewPostElement.current.value;
-        props.Dispatch({type: 'UpdatePostText', NewText: Text});
+        let Action = UpdatePostTextActionCreator(Text);
+        props.Dispatch(Action);
     };
 
     return (

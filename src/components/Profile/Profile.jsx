@@ -4,6 +4,8 @@ import ProfileInfo from './ProfileInfo/ProfileInfo';
 import MyPosts from './MyPosts/MyPosts.jsx';
 
 const Profile = (props) => {
+
+    // Расзделение на профиль пользователя и на его посты
     return (
         <div className="content__box">
 

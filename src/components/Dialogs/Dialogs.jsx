@@ -1,7 +1,8 @@
 import React from 'react';
 import s from './Dialogs.module.css';
 import Mail from "./Mail/Mail";
-import Nick from "./Nick/Nick"
+import Nick from "./Nick/Nick";
+import {NewMessageActionCreator, UpdateMassageTextActionCreator} from "./../../Redux/state";
 
 
 const Dialogs = (props) => {
@@ -9,21 +10,26 @@ const Dialogs = (props) => {
     let NicksElements = props.DialogsPage.NickData.map(NickEl => <Nick
         Name={NickEl.Name}
         Ava={NickEl.Ava}/>);
+
     let DialogsElements = props.DialogsPage.DialogUsersData.map(MailEl => <Mail
         Avatar={MailEl.Avatar}
         UserName={MailEl.UserName}
         Mail={MailEl.Mail}/>);
 
+    // Для чтения значений textarea
     let NewDialogElement = React.createRef();
 
+    // Добовление Поста
     let AddMail = () => {
         debugger;
-        props.Dispatch({type: 'NewMessage'});
+        props.Dispatch(NewMessageActionCreator());
     };
 
+    // Обновление текста
     let onChange = () => {
         let Text = NewDialogElement.current.value;
-        props.Dispatch({type: 'UpdateMassageText', NewText: Text});
+        let Action = UpdateMassageTextActionCreator(Text);
+        props.Dispatch(Action);
     };
 
     return (
