@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Dialogs.module.css';
 import Mail from "./Mail/Mail";
 import Nick from "./Nick/Nick";
-import {NewMessageActionCreator, UpdateMassageTextActionCreator} from "./../../Redux/state";
+import {NewMessageActionCreator, UpdateMassageTextActionCreator} from "./../../Redux/dialogs-reducer";
 
 
 const Dialogs = (props) => {

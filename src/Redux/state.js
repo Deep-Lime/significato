@@ -1,7 +1,5 @@
-const NewPost = 'NewPost';
-const UpdatePostText = 'UpdatePostText';
-const NewMessage = 'NewMessage';
-const UpdateMassageText = 'UpdateMassageText';
+import ProfileReducer from "./profile-reducer";
+import DialogsReducer from './dialogs-reducer';
 
 let store = {
     _state: {
@@ -150,50 +148,16 @@ let store = {
         this._callSubscriber = Observer;
     },
 
+    // Передаёт state и Action в Reducer,
+    // заменяет старый state на полученый от редьюсеров state и вызывает перересовку страницы
     Dispatch(Action) {
-        //Profile Posts
-        if (Action.type === NewPost) {
-            let AddPost = {
-                Title: this._state.ProfilePage.NewPostText,
-                Massage: "",
-                Img: "https://cdn.fotosklad.ru/upload/iblock/70a/70a7a24cad78cd0f8a3e6dfc6ba9a574_thumb_c964fe4a8e60f8f.jpg",
-                Likes: "0",
-                Comments: "0",
-                Reposts: "0",
-                Views: "1"
-            };
-            this._state.ProfilePage.PostData.push(AddPost);
-            this._state.ProfilePage.NewPostText = '';
-            this._callSubscriber(this._state);
-        } else if (Action.type === UpdatePostText) {
-            this._state.ProfilePage.NewPostText = Action.NewText;
-            this._callSubscriber(this._state);
+        this._state.profilePage = ProfileReducer(this._state.ProfilePage, Action);
+        this._state.dialogsPage = DialogsReducer(this._state.DialogsPage, Action);
 
-        //Dialogs Messages
-        } else if (Action.type === NewMessage) {
-            let AddMessage = {
-                UserName: "HackerMen",
-                Avatar: "https://images.unsplash.com/photo-1544890225-2f3faec4cd60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-                Mail: this._state.DialogsPage.NewMessageText
-            };
-            this._state.DialogsPage.DialogUsersData.push(AddMessage);
-            this._state.DialogsPage.NewMessageText = '';
-            this._callSubscriber(this._state);
-        } else if (Action.type === UpdateMassageText) {
-            this._state.DialogsPage.NewMessageText = Action.NewText;
-            this._callSubscriber(this._state);
-        }
+        this._callSubscriber(this._state);
     }
 
 };
-
-//Profile Posts
-export const NewPostActionCreator = () => ({type: NewPost});
-export const UpdatePostTextActionCreator = (Text) => ({type: UpdatePostText, NewText: Text});
-
-//Dialogs Messages
-export const NewMessageActionCreator = () => ({type: NewMessage});
-export const UpdateMassageTextActionCreator = (Text) => ({type: UpdateMassageText, NewText: Text});
 
 export default store;
 window.store = store;
